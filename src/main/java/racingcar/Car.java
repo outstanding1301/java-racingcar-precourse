@@ -25,4 +25,12 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public String getPositionString() {
+        String positionStr = "";
+        for (int i=0; i<position; i++) {
+            positionStr += "-";
+        }
+        return positionStr;
+    }
 }
