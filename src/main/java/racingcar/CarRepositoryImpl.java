@@ -3,11 +3,16 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarRepository {
-    private List<Car> cars;
+public class CarRepositoryImpl implements CarRepository {
+    private List<Car> cars = new ArrayList<>();
 
-    public CarRepository() {
-        cars = new ArrayList<>();
-        cars.add(new Car(""));
+    @Override
+    public List<Car> getCarList() {
+        return cars;
+    }
+
+    @Override
+    public void addCar(Car car) {
+        cars.add(car);
     }
 }
