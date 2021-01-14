@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Game {
@@ -41,5 +42,20 @@ public class Game {
         }
         String winner = String.join(", ", getWinner().stream().map(c -> c.getName()).collect(Collectors.toList()));
         System.out.println("최종 우승자 : " + winner);
+    }
+
+    public static Game createGame(InputManager inputManager) {
+        CarRepository repository = new CarRepositoryImpl();
+
+        String[] carNames = inputManager.getNames();
+        if (carNames == null) return null;
+        Integer trial = inputManager.getTrial();
+        if (trial == null) return null;
+
+        for (String carName : carNames) {
+            repository.addCar(new Car(carName));
+        }
+
+        return new Game(repository, trial);
     }
 }
